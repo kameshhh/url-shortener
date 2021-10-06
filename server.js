@@ -6,7 +6,7 @@ const app = express();
 mongoose.connect('mongodb://localhost/urlShortener', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-})
+}, () => {})
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
