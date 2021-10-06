@@ -13,28 +13,42 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }))
 
 app.get('/', async(req, res) => {
-    const shortUrls = await ShortUrl.find()
+    try {
 
-    res.render('index', { shortUrls: shortUrls })
+        const shortUrls = await ShortUrl.find()
+
+        res.render('index', { shortUrls: shortUrls })
+    } catch (err) {
+        console.log(err)
+    }
 
 })
 
 app.post('/shortUrls', async(req, res) => {
-    await ShortUrl.create({ full: req.body.fullURL })
-    res.redirect('/')
+    try {
 
+        await ShortUrl.create({ full: req.body.fullURL })
+        res.redirect('/')
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 
 
 app.get('/:shortUrl', async(req, res) => {
-    const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl })
-    if (shortUrl == null) return res.sendStatus(404)
+    try {
 
-    shortUrl.clicks++
-        shortUrl.save()
+        const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl })
+        if (shortUrl == null) return res.sendStatus(404)
 
-    res.redirect(shortUrl.full)
+        shortUrl.clicks++
+            shortUrl.save()
+
+        res.redirect(shortUrl.full)
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 
