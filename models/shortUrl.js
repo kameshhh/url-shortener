@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const { Schema } = require('mongoose')
 const shortId = require('shortid')
 
+
 const shortUrlSchema = new Schema({
     full: {
         type: String,
