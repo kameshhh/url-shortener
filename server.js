@@ -6,10 +6,12 @@ const dotenv = require('dotenv');
 
 dotenv.config()
 
-mongoose.connect('mongodb://localhost/urlShortener', {
+mongoose.connect(process.env.URL_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => {})
+}, () => {
+    console.log("db connected")
+})
 
 
 
