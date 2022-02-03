@@ -28,7 +28,8 @@
             width: 300px;
             border-radius: 10px;
             border: 1px solid skyblue;
-            background-color: rgba(0, 0, 0, 0.589);
+            background-color: rgba(2, 1, 1, 0.589);
+            color: White;
             margin: 40px 0;
         }
         
